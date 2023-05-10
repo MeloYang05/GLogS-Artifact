@@ -1,0 +1,1 @@
+g.V().match(__.as('A').out('STUDYAT').as('C'),__.as('A').out('KNOWS').as('B'),__.as('B').out('STUDYAT').as('C')).count()

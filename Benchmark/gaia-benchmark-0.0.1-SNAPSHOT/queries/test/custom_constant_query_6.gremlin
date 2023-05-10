@@ -1,0 +1,1 @@
+    g.V().hasLabel('PERSON').outE('STUDYAT').inV().hasLabel('UNIVERSITY').count()

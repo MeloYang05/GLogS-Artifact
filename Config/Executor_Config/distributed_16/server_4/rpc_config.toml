@@ -1,0 +1,2 @@
+rpc_host = '0.0.0.0'
+rpc_port = 1238

@@ -1,0 +1,1 @@
+g.V().match(__.as('A').hasLabel('COMMENT').out('REPLYOF').as('B'), __.as('A').hasLabel('COMMENT').out('HASCREATOR').as('C'), __.as('B').hasLabel('COMMENT').out('HASCREATOR').as('D'), __.as('D').hasLabel('PERSON').out('KNOWS').as('C'), __.as('C').hasLabel('PERSON').in('HASMEMBER').hasLabel('FORUM').as('E'), __.as('D').hasLabel('PERSON').in('HASMEMBER').as('E')).count()

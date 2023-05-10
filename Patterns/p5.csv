@@ -1,0 +1,6 @@
+start_v_id,start_v_label,end_v_id,end_v_label,edge_id,edge_label
+1,2,3,1,0,0
+0,2,2,1,1,0
+3,1,0,2,2,13
+2,1,1,2,3,13
+0,2,1,2,4,3

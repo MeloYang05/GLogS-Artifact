@@ -1,0 +1,1 @@
+g.V().hasLabel('PERSON').match(__.as('A').out('KNOWS').as('B'),__.as('A').out('KNOWS').as('C'),__.as('B').out('KNOWS').as('C')).count()

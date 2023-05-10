@@ -1,0 +1,25 @@
+2023-05-10 18:09:50,714 INFO	[main] [graph_proxy/src/adapters/exp_store/read_graph.rs:68] Read the graph data from "/opt/resources/Graphs/scale_1/bin_p8/partition_2" for demo.
+2023-05-10 18:09:50,714 INFO	[main] [/opt/GraphScope/interactive_engine/executor/store/exp_store/src/config.rs:181] Partition 0 reading binary file...
+2023-05-10 18:09:51,430 INFO	[main] [/opt/GraphScope/interactive_engine/executor/store/exp_store/src/config.rs:247] Time elapsed: 0.715700233
+2023-05-10 18:09:51,430 INFO	[main] [integrated/src/bin/start_rpc_server.rs:41] try to start rpc server;
+2023-05-10 18:09:51,430 INFO	[reactor 0] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/executor/src/reactor.rs:286] start reactor executor with maximum 96 core threads;
+2023-05-10 18:09:51,530 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/lib.rs:43] start server 2 ...
+2023-05-10 18:09:51,530 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:32] network listen on 0.0.0.0:11236
+2023-05-10 18:09:51,530 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/lib.rs:195] server 2 start on 0.0.0.0:11236
+2023-05-10 18:09:51,530 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/server/src/cluster/standalone.rs:32] compute server[2] start on 0.0.0.0:11236
+2023-05-10 18:09:51,530 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/server/src/rpc.rs:314] starting RPC job server on 0.0.0.0:1236 ...
+2023-05-10 18:09:51,530 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/server/src/cluster/standalone.rs:27] RPC server of server[2] start on 0.0.0.0:1236
+2023-05-10 18:09:51,531 ERROR	[net-manager-2] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/manager.rs:56] fail to connect server[id=0,addr=11.158.244.107:11234], caused by IOError: Connection reset by peer (os error 104);
+2023-05-10 18:09:51,531 ERROR	[net-manager-2] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/manager.rs:56] fail to connect server[id=1,addr=11.158.244.107:11235], caused by IOError: Connection reset by peer (os error 104);
+2023-05-10 18:09:52,530 INFO	[network-listener] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:42] accept new connection from server 3 on 172.17.0.1:40107
+2023-05-10 18:09:52,532 INFO	[network-listener] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:42] accept new connection from server 5 on 172.17.0.1:40114
+2023-05-10 18:09:52,533 INFO	[network-listener] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:42] accept new connection from server 7 on 172.17.0.1:40120
+2023-05-10 18:09:53,534 INFO	[network-listener] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:42] accept new connection from server 6 on 172.17.0.1:40152
+2023-05-10 18:09:53,535 INFO	[network-listener] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:42] accept new connection from server 4 on 172.17.0.1:40154
+2023-05-10 18:09:53,983 INFO	[net-manager-2] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:122] connect server 0 on 11.158.244.107:11234 success;
+2023-05-10 18:09:54,114 INFO	[net-manager-2] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:122] connect server 1 on 11.158.244.107:11235 success;
+2023-05-10 18:10:06,414 INFO	[tokio-runtime-worker] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/lib.rs:283] spawn job_ir_plan_1(1) with 4 workers;
+2023-05-10 18:10:07,118 INFO	[reactor 4] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/worker.rs:230] [worker_9(1)]: job(1) 'ir_plan_1' finished, used 703 ms;
+2023-05-10 18:10:07,118 INFO	[reactor 4] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/worker.rs:230] [worker_10(1)]: job(1) 'ir_plan_1' finished, used 703 ms;
+2023-05-10 18:10:07,118 INFO	[reactor 1] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/worker.rs:230] [worker_8(1)]: job(1) 'ir_plan_1' finished, used 705 ms;
+2023-05-10 18:10:07,118 INFO	[reactor 4] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/worker.rs:230] [worker_11(1)]: job(1) 'ir_plan_1' finished, used 703 ms;

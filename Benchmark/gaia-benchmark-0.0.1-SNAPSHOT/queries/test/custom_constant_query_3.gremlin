@@ -1,0 +1,1 @@
+g.V().match(__.as('A').out('KNOWS').as('B'),__.as('A').out('KNOWS').as('C'),__.as('B').out('KNOWS').as('C'),__.as('A').out('KNOWS').as('D'),__.as('B').out('KNOWS').as('D'),__.as('C').out('KNOWS').as('D')).count()

@@ -1,0 +1,415 @@
+cd /opt/GraphScope/interactive_engine/compiler && java \
+  -cp ".:./target/libs/*:./target/compiler-0.0.1-SNAPSHOT.jar" \
+  -Djna.library.path=../executor/ir/target/release \
+  -Dgraph.schema= \
+  -Dpegasus.hosts= \
+  -Dpegasus.server.num= \
+  com.alibaba.graphscope.gremlin.service.GraphServiceMain
+[main] INFO org.apache.tinkerpop.gremlin.server.util.MetricManager - Configured Metrics ConsoleReporter configured with report interval=1800000ms
+[main] INFO org.apache.tinkerpop.gremlin.server.util.MetricManager - Configured Metrics CsvReporter configured with report interval=1800000ms to fileName=/tmp/gremlin-server-metrics.csv
+[main] INFO org.apache.tinkerpop.gremlin.server.util.MetricManager - Configured Metrics JmxReporter configured with domain= and agentId=
+[main] INFO org.apache.tinkerpop.gremlin.server.util.MetricManager - Configured Metrics Slf4jReporter configured with interval=1800000ms and loggerName=org.apache.tinkerpop.gremlin.server.Settings$Slf4jReporterMetrics
+[main] INFO org.apache.tinkerpop.gremlin.server.util.ServerGremlinExecutor - Initialized Gremlin thread pool.  Threads in pool named with pattern gremlin-*
+[main] INFO org.apache.tinkerpop.gremlin.server.util.ServerGremlinExecutor - Initialized GremlinExecutor and preparing GremlinScriptEngines instances.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass (file:/opt/GraphScope/interactive_engine/compiler/target/libs/groovy-2.5.14-indy.jar) to method java.lang.Object.finalize()
+WARNING: Please consider reporting this to the maintainers of org.codehaus.groovy.reflection.CachedClass
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[main] INFO org.apache.tinkerpop.gremlin.server.util.ServerGremlinExecutor - Initialized gremlin-groovy GremlinScriptEngine and registered metrics
+[main] INFO org.apache.tinkerpop.gremlin.server.op.OpLoader - Adding the standard OpProcessor.
+[main] INFO org.apache.tinkerpop.gremlin.server.op.OpLoader - Adding the session OpProcessor.
+[main] INFO org.apache.tinkerpop.gremlin.server.op.OpLoader - Adding the traversal OpProcessor.
+[main] INFO org.apache.tinkerpop.gremlin.server.GremlinServer - idleConnectionTimeout was set to 0 which resolves to 0 seconds when configuring this value - this feature will be disabled
+[main] INFO org.apache.tinkerpop.gremlin.server.GremlinServer - keepAliveInterval was set to 0 which resolves to 0 seconds when configuring this value - this feature will be disabled
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v3.0+json with org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV3d0
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/json with org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV3d0
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.graphbinary-v1.0 with org.apache.tinkerpop.gremlin.driver.ser.GraphBinaryMessageSerializerV1
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.graphbinary-v1.0-stringd with org.apache.tinkerpop.gremlin.driver.ser.GraphBinaryMessageSerializerV1
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v1.0+gryo-stringd with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV3d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v3.0+gryo-stringd with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV3d0
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v1.0+gryo with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v3.0+json with org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV3d0
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/json with org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV3d0
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.graphbinary-v1.0 with org.apache.tinkerpop.gremlin.driver.ser.GraphBinaryMessageSerializerV1
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.graphbinary-v1.0-stringd with org.apache.tinkerpop.gremlin.driver.ser.GraphBinaryMessageSerializerV1
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v1.0+gryo-stringd with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV3d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v3.0+gryo-stringd with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV3d0
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v1.0+gryo with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v3.0+json with org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV3d0
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/json with org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV3d0
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.graphbinary-v1.0 with org.apache.tinkerpop.gremlin.driver.ser.GraphBinaryMessageSerializerV1
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.graphbinary-v1.0-stringd with org.apache.tinkerpop.gremlin.driver.ser.GraphBinaryMessageSerializerV1
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v1.0+gryo-stringd with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV3d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v3.0+gryo-stringd with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV3d0
+[main] WARN org.apache.tinkerpop.gremlin.server.AbstractChannelizer - The org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0 serialization class is deprecated.
+[main] INFO org.apache.tinkerpop.gremlin.server.AbstractChannelizer - Configured application/vnd.gremlin-v1.0+gryo with org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0
+[gremlin-server-boss-1] INFO org.apache.tinkerpop.gremlin.server.GremlinServer - Gremlin Server configured with worker thread pool of 1, gremlin pool of 96 and boss thread pool of 1.
+[gremlin-server-boss-1] INFO org.apache.tinkerpop.gremlin.server.GremlinServer - Channel started at port 8182.
+catalog path: "/opt/resources/Catalogs/catalog"
+Generate Extend Plan with Catalogue
+[gremlin-server-exec-2] INFO com.alibaba.graphscope.gremlin.plugin.processor.IrStandardOpProcessor - gremlin query "g.V().match(__.as('A').hasLabel('COMMENT').out('HASCREATOR').as('B'), __.as('A').hasLabel('COMMENT').out('HASTAG').as('C'), __.as('B').hasLabel('PERSON').out('HASINTEREST').as('C')).count()", job conf name "ir_plan_1", ir plan {
+  "nodes": [
+    {
+      "opr": {
+        "opr": {
+          "Scan": {
+            "scan_opt": 0,
+            "alias": null,
+            "params": {
+              "tables": [],
+              "columns": [],
+              "is_all_columns": false,
+              "limit": null,
+              "predicate": null,
+              "sample_ratio": 1.0,
+              "extra": {}
+            },
+            "idx_predicate": null
+          }
+        }
+      },
+      "children": [
+        1
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "Scan": {
+            "scan_opt": 0,
+            "alias": null,
+            "params": {
+              "tables": [
+                {
+                  "item": {
+                    "Id": 1
+                  }
+                }
+              ],
+              "columns": [],
+              "is_all_columns": false,
+              "limit": null,
+              "predicate": null,
+              "sample_ratio": 1.0,
+              "extra": {}
+            },
+            "idx_predicate": null
+          }
+        }
+      },
+      "children": [
+        2
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "Select": {
+            "predicate": {
+              "operators": [
+                {
+                  "item": {
+                    "Var": {
+                      "tag": null,
+                      "property": {
+                        "item": {
+                          "Label": {}
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "item": {
+                    "Logical": 0
+                  }
+                },
+                {
+                  "item": {
+                    "Const": {
+                      "item": {
+                        "I64": 1
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "children": [
+        3
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "As": {
+            "alias": {
+              "item": {
+                "Id": 1
+              }
+            }
+          }
+        }
+      },
+      "children": [
+        4
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "Edge": {
+            "v_tag": {
+              "item": {
+                "Id": 1
+              }
+            },
+            "direction": 1,
+            "params": {
+              "tables": [
+                {
+                  "item": {
+                    "Id": 0
+                  }
+                }
+              ],
+              "columns": [],
+              "is_all_columns": false,
+              "limit": null,
+              "predicate": null,
+              "sample_ratio": 1.0,
+              "extra": {}
+            },
+            "alias": {
+              "item": {
+                "Id": 0
+              }
+            },
+            "expand_opt": 0
+          }
+        }
+      },
+      "children": [
+        5
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "Select": {
+            "predicate": {
+              "operators": [
+                {
+                  "item": {
+                    "Var": {
+                      "tag": null,
+                      "property": {
+                        "item": {
+                          "Label": {}
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "item": {
+                    "Logical": 0
+                  }
+                },
+                {
+                  "item": {
+                    "Const": {
+                      "item": {
+                        "I64": 2
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "children": [
+        6,
+        7
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "Edge": {
+            "v_tag": {
+              "item": {
+                "Id": 0
+              }
+            },
+            "direction": 0,
+            "params": {
+              "tables": [
+                {
+                  "item": {
+                    "Id": 1
+                  }
+                }
+              ],
+              "columns": [],
+              "is_all_columns": false,
+              "limit": null,
+              "predicate": null,
+              "sample_ratio": 1.0,
+              "extra": {}
+            },
+            "alias": {
+              "item": {
+                "Id": 2
+              }
+            },
+            "expand_opt": 0
+          }
+        }
+      },
+      "children": [
+        8
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "Edge": {
+            "v_tag": {
+              "item": {
+                "Id": 1
+              }
+            },
+            "direction": 0,
+            "params": {
+              "tables": [
+                {
+                  "item": {
+                    "Id": 10
+                  }
+                }
+              ],
+              "columns": [],
+              "is_all_columns": false,
+              "limit": null,
+              "predicate": null,
+              "sample_ratio": 1.0,
+              "extra": {}
+            },
+            "alias": {
+              "item": {
+                "Id": 2
+              }
+            },
+            "expand_opt": 0
+          }
+        }
+      },
+      "children": [
+        8
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "Intersect": {
+            "parents": [
+              5,
+              6
+            ],
+            "key": {
+              "item": {
+                "Id": 2
+              }
+            }
+          }
+        }
+      },
+      "children": [
+        9
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "GroupBy": {
+            "mappings": [],
+            "functions": [
+              {
+                "vars": [
+                  {
+                    "tag": null,
+                    "property": null
+                  }
+                ],
+                "aggregate": 3,
+                "alias": {
+                  "item": {
+                    "Id": 3
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "children": [
+        10
+      ]
+    },
+    {
+      "opr": {
+        "opr": {
+          "Sink": {
+            "tags": [
+              {
+                "key": {
+                  "item": {
+                    "Id": 3
+                  }
+                }
+              }
+            ],
+            "sink_target": {
+              "inner": {
+                "SinkDefault": {
+                  "id_name_mappings": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "children": []
+    }
+  ],
+  "roots": [
+    0
+  ]
+}
+[grpc-default-executor-0] INFO com.alibaba.pegasus.RpcClient - finish get job response from one server
+[grpc-default-executor-0] INFO com.alibaba.pegasus.RpcClient - finish get job response from one server
+[grpc-default-executor-0] INFO com.alibaba.pegasus.RpcClient - finish get job response from one server
+[grpc-default-executor-0] INFO com.alibaba.pegasus.RpcClient - finish get job response from one server
+[grpc-default-executor-0] INFO com.alibaba.pegasus.RpcClient - finish get job response from one server
+[grpc-default-executor-6] INFO com.alibaba.pegasus.RpcClient - finish get job response from one server
+[grpc-default-executor-0] INFO com.alibaba.pegasus.RpcClient - finish get job response from one server
+[grpc-default-executor-0] INFO com.alibaba.pegasus.RpcClient - finish get job response from one server
+[grpc-default-executor-0] INFO com.alibaba.pegasus.RpcClient - finish get job response from all servers
+[gremlin-server-exec-2] INFO com.alibaba.graphscope.gremlin.plugin.processor.IrStandardOpProcessor - query "g.V().match(__.as('A').hasLabel('COMMENT').out('HASCREATOR').as('B'), __.as('A').hasLabel('COMMENT').out('HASTAG').as('C'), __.as('B').hasLabel('PERSON').out('HASINTEREST').as('C')).count()" total execution time is 1269.687 ms
+[gremlin-server-exec-2] INFO MetricLog - 1 | g.V().match(__.as('A').hasLabel('COMMENT').out('HASCREATOR').as('B'), __.as('A').hasLabel('COMMENT').out('HASTAG').as('C'), __.as('B').hasLabel('PERSON').out('HASINTEREST').as('C')).count() | true | 1269.687 | 1683742205894
+make: *** [Makefile:55: run] Terminated

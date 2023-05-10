@@ -1,0 +1,1 @@
+g.V().match(__.as('A').hasLabel('PERSON').out('ISLOCATEDIN').hasLabel('PLACE').as('C'),__.as('B').hasLabel('PERSON').out('ISLOCATEDIN').as('C'),__.as('A').out('LIKES').as('D'),__.as('D').hasLabel('COMMENT').out('HASCREATOR').as('B')).count()

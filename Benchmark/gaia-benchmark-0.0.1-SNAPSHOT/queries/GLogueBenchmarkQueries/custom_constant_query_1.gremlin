@@ -1,0 +1,1 @@
+g.V().match(__.as('A').hasLabel('COMMENT').out('HASCREATOR').as('B'), __.as('A').hasLabel('COMMENT').out('HASTAG').as('C'), __.as('B').hasLabel('PERSON').out('HASINTEREST').as('C')).count()

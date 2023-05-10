@@ -1,0 +1,20 @@
+compiler_server_ip: 127.0.0.1
+server0_ip: 11.158.244.107
+server1_ip: 11.158.244.102
+server2_ip: 11.158.244.99
+server3_ip: 11.158.244.98
+server4_ip: 11.158.244.171
+server5_ip: 11.158.244.166
+server6_ip: 11.158.244.165
+server7_ip: 11.158.244.164
+server8_ip: 11.158.244.161
+server9_ip: 11.158.243.225
+server10_ip: 11.158.227.85
+server11_ip: 11.158.226.214
+server12_ip: 11.158.226.175
+server13_ip: 11.158.226.137
+server14_ip: 11.158.244.101
+server15_ip: 11.158.244.163
+
+
+

@@ -1,0 +1,23 @@
+2023-05-10 18:09:51,604 INFO	[main] [graph_proxy/src/adapters/exp_store/read_graph.rs:68] Read the graph data from "/opt/resources/Graphs/scale_1/bin_p8/partition_6" for demo.
+2023-05-10 18:09:51,604 INFO	[main] [/opt/GraphScope/interactive_engine/executor/store/exp_store/src/config.rs:181] Partition 0 reading binary file...
+2023-05-10 18:09:52,289 INFO	[main] [/opt/GraphScope/interactive_engine/executor/store/exp_store/src/config.rs:247] Time elapsed: 0.684857348
+2023-05-10 18:09:52,289 INFO	[main] [integrated/src/bin/start_rpc_server.rs:41] try to start rpc server;
+2023-05-10 18:09:52,289 INFO	[reactor 0] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/executor/src/reactor.rs:286] start reactor executor with maximum 96 core threads;
+2023-05-10 18:09:52,389 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/lib.rs:43] start server 6 ...
+2023-05-10 18:09:52,389 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:32] network listen on 0.0.0.0:11240
+2023-05-10 18:09:52,389 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/lib.rs:195] server 6 start on 0.0.0.0:11240
+2023-05-10 18:09:52,389 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/server/src/cluster/standalone.rs:32] compute server[6] start on 0.0.0.0:11240
+2023-05-10 18:09:52,389 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/server/src/rpc.rs:314] starting RPC job server on 0.0.0.0:1240 ...
+2023-05-10 18:09:52,389 INFO	[main] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/server/src/cluster/standalone.rs:27] RPC server of server[6] start on 0.0.0.0:1240
+2023-05-10 18:09:52,981 INFO	[net-manager-6] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:122] connect server 0 on 11.158.244.107:11234 success;
+2023-05-10 18:09:53,113 INFO	[net-manager-6] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:122] connect server 1 on 11.158.244.107:11235 success;
+2023-05-10 18:09:53,389 INFO	[network-listener] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:42] accept new connection from server 7 on 172.17.0.1:54785
+2023-05-10 18:09:53,534 INFO	[net-manager-6] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:122] connect server 2 on 11.158.244.107:11236 success;
+2023-05-10 18:09:53,739 INFO	[net-manager-6] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:122] connect server 3 on 11.158.244.107:11237 success;
+2023-05-10 18:09:53,798 INFO	[net-manager-6] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:122] connect server 4 on 11.158.244.107:11238 success;
+2023-05-10 18:09:53,879 INFO	[net-manager-6] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/network/src/transport/block/mod.rs:122] connect server 5 on 11.158.244.107:11239 success;
+2023-05-10 18:10:06,414 INFO	[tokio-runtime-worker] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/lib.rs:283] spawn job_ir_plan_1(1) with 4 workers;
+2023-05-10 18:10:07,118 INFO	[reactor 3] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/worker.rs:230] [worker_24(1)]: job(1) 'ir_plan_1' finished, used 705 ms;
+2023-05-10 18:10:07,118 INFO	[reactor 1] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/worker.rs:230] [worker_27(1)]: job(1) 'ir_plan_1' finished, used 703 ms;
+2023-05-10 18:10:07,118 INFO	[reactor 4] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/worker.rs:230] [worker_26(1)]: job(1) 'ir_plan_1' finished, used 703 ms;
+2023-05-10 18:10:07,118 INFO	[reactor 2] [/opt/GraphScope/interactive_engine/executor/engine/pegasus/pegasus/src/worker.rs:230] [worker_25(1)]: job(1) 'ir_plan_1' finished, used 704 ms;

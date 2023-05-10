@@ -1,0 +1,28 @@
+[network]
+server_id = 5
+servers_size = 8
+[[network.servers]]
+hostname = '11.158.244.107'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.107'
+port = 11235
+[[network.servers]]
+hostname = '11.158.244.107'
+port = 11236
+[[network.servers]]
+hostname = '11.158.244.107'
+port = 11237
+[[network.servers]]
+hostname = '11.158.244.107'
+port = 11238
+[[network.servers]]
+hostname = '0.0.0.0'
+port = 11239
+[[network.servers]]
+hostname = '11.158.244.107'
+port = 11240
+[[network.servers]]
+hostname = '11.158.244.107'
+port = 11241
+

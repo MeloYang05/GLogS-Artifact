@@ -1,0 +1,52 @@
+[network]
+server_id = 0
+servers_size = 16
+[[network.servers]]
+hostname = '0.0.0.0'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.102'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.99'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.98'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.171'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.166'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.165'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.164'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.161'
+port = 11234
+[[network.servers]]
+hostname = '11.158.243.225'
+port = 11234
+[[network.servers]]
+hostname = '11.158.227.85'
+port = 11234
+[[network.servers]]
+hostname = '11.158.226.214'
+port = 11234
+[[network.servers]]
+hostname = '11.158.226.175'
+port = 11234
+[[network.servers]]
+hostname = '11.158.226.137'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.101'
+port = 11234
+[[network.servers]]
+hostname = '11.158.244.163'
+port = 11234
+

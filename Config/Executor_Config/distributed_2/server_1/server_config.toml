@@ -1,0 +1,10 @@
+[network]
+server_id = 1
+servers_size = 2
+[[network.servers]]
+hostname = '11.158.244.107'
+port = 11234
+[[network.servers]]
+hostname = '0.0.0.0'
+port = 11235
+
