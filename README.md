@@ -4,9 +4,9 @@ This repository holds the artifact of the paper "GLogS: Interactive Graph Patter
 
 GLogS is a system designed for interactive graph pattern matching query at large scale, which allows users to interactively submit queries using a declarative language. The system will compile and compute optimal execution plans for the queries, and execute them on an existing distributed dataflow engine. You can find the source code of GLogS [here](https://github.com/shirly121/GraphScope/tree/ir_catalog_dev/interactive_engine). 
 
-## System Specification
+## 1. System Specification
 
-### Hardware Dependencies
+### 1.1 Hardware Dependencies
 
 As stated in the paper, we deployed a cluster for the evaluation, which consisted of one frontend server and up to 16 backend servers. Each server was configured with:
 
@@ -16,7 +16,7 @@ As stated in the paper, we deployed a cluster for the evaluation, which consiste
 
 In addition, a 25Gbps network card was used to connect these servers. Such a high-spec cluster was necessary to handle the complexity of pattern matching queries at a large scale. We understand that reproducing a high-spec cluster like this can be challenging, which is why we have prepared relatively small datasets in this artifact by default. Furthermore, we have also included a script that allows you to quickly simulate a 'mini' cluster containing up to 8 backend servers locally, so that you can conveniently validate GLogS's performance. Detailed instructions on how to configure a GLogS cluster will be provided in the later section.
 
-### Environment
+### 1.2 Environment
 
 Most of the components of GLogS are written in Rust, except for the compiler for the graph declarative language, which is written in Java. To save time in setting up these components, we have prepared the execution environment in Docker images. You can deploy the environment by running the following command:
 
@@ -26,7 +26,7 @@ sh ./Scripts/load_docker_images.sh
 
 Some basic tools, such as `curl`, are required. Additionally, since the benchmark tools for GLogS are written in Java, you should ensure that your machine has JDK >= 11 installed.
 
-### Datasets
+### 1.3 Datasets
 
 Due to the size limit of the GitHub repository, we have uploaded the already partitioned graphs used in our experiments to the Object Storage Service of Alibaba Cloud. We have provided you with a script to quickly download and install the graph partitions onto your machine.
 
@@ -49,7 +49,7 @@ This table shows our provided graphs with scales and partitions.
 |  300  |    4, 8, 16    |
 | 1000  |       16       |
 
-### Artifact Directory
+### 1.4 Artifact Directory
 
 ```
 .
@@ -59,14 +59,13 @@ This table shows our provided graphs with scales and partitions.
 ├── Graphs           # graphs used in the experiment
 ├── Images           # store docker images to provide execution environment
 ├── Logs             # logs of compiler and executors
-├── Patterns         # patterns for query in the experiment
 ├── Schemas          # schemas of graphs
 └── Scripts          # scripts for conducting experiments or configuring the environment
 ```
 
-## Quick Evaluation
+## 2. Quick Evaluation
 
-### Experiment on single machine
+### 2.1 Experiment on single machine
 
 We provide you with a convenient way to reproduce GLogS's performance on a single machine using non-partitioned graphs. Firstly, download the non-partitioned graph with the desired scale onto your machine by running:
 
@@ -95,7 +94,7 @@ Record { curr: None, columns: {0: OffGraph(Primitive(Long(41713)))} }
 executing query time cost is 1000 ms
 ```
 
-### Experiment on a simulated cluster
+### 2.2 Experiment on a simulated cluster
 
 Before simulating a GLogS cluster on your local machine, you should download the required graph by running:
 
@@ -143,7 +142,7 @@ Finally, you can use `./Scripts/stop_simulated_cluster.sh` to stop the cluster
 sh ./Scripts/stop_simulated_cluster.sh
 ```
 
-## GLogS Cluster Configuration
+## 3. GLogS Cluster Configuration
 
 A GLogS cluster consists of one frontend server and several backend servers. The frontend server compiles the submitted graph queries and delivers the task to the backend servers for execution. Each backend server stores one graph partition, and the number of graph partitions should be equal to the number of backend servers. For example, if the graph has four partitions, then the cluster should have exactly four backend servers: Backend server 0 stores graph partition 0, server 1 stores partition 1, server 2 stores partition 2, and server 3 stores partition 3.
 
@@ -157,7 +156,7 @@ Configuring a GLogS cluster mainly involves these steps:
 
 Next, we will illustrate the step-by-step configuration of a GLogS cluster.
 
-### Set up IPs and Ports
+### 3.1 Set up IPs and Ports
 
 Firstly, you should `git clone` the artifact repository to one machine in your cluster. The IP and port configurations are stored separately in `./Config/IP_Config.txt` and `./Config/Port_Config.txt`, respectively. 
 
@@ -201,7 +200,7 @@ After configuring the IPs and ports, we suggest that you use the `scp` command t
 scp -r ./Artifact <server_hostname>:<Artifact Directory>
 ```
 
-### Configure the Frontend Server
+### 3.2 Configure the Frontend Server
 
 Assuming you are already in the artifact directory, you should configure the execution environment of the compiler by running:
 
@@ -217,7 +216,7 @@ sh ./Scripts/set_compiler_config.sh <server_num> <thread_num>
 
 where `<server_num>` represents the number of backend servers, and `<thread_num>` indicates the number of threads participating in the computation of each backend server."
 
-### Configure each Backend Server
+### 3.3 Configure each Backend Server
 
 On each backend server, the first step is to configure the execution environment of the executor by running:
 
@@ -237,11 +236,11 @@ Finally, configure the executor according to the IPs and ports files by running:
 sh ./Scripts/set_executor_config.sh
 ```
 
-### Start up the cluster
+### 3.4 Start up the cluster
 
 After configuring the frontend server and all the backend servers, it is time to start up the cluster.
 
-#### Start up Executors on Backend Servers
+#### 3.4.1 Start up Executors on Backend Servers
 
 We suggest starting up the executors on the backend servers in ascending order of their IDs. On each backend server, you can start up the executor by simply running:
 
@@ -253,7 +252,7 @@ where `<scale>` is the graph scale, `<server_num>` is the number of backend serv
 
 During the initialization of executor, it may takes several minutes to load the graph depends on the graph scale. Before the graph has been loaded, submitting queries to the cluster is not allowed.
 
-#### Start up compiler on Frontend Server
+#### 3.4.2 Start up compiler on Frontend Server
 
 You can start up the compiler on the frontend server by running:
 
@@ -261,7 +260,7 @@ You can start up the compiler on the frontend server by running:
 sh ./Scripts/start_compiler.sh
 ```
 
-### Submit Queries
+### 3.4 Submit Queries
 
 After the compiler and all the executors are started up, you can submit queries to the GLogS cluster from any machine within the subnet, as long as the IPs and ports are properly configured in the two config files. To submit a query to the GLogS cluster, run:
 
@@ -275,4 +274,61 @@ For example, to submit query p1 to the cluster, run the following command:
 sh ./Scripts/query_on_cluster.sh 1
 ```
 
+## 4 Reproduce Experiment Results
+
+### 4.1 Compare GLogS with Neo4j
+
+In the paper, we compared GLogS with Neo4j on a single machine using the scale-1 graph to allow Neo4j to process all queries in a reasonable time. To reproduce the experiment results, follow these steps:
+
+First, load the Docker images of GLogS and Neo4j by running the following commands:
+
+```bash
+# Load the image of glogs executor
+sh ./Scripts/load_docker_executor.sh
+# Load the image of neo4j
+sh ./Scripts/load_docker_neo4j.sh
+```
+
+Next, download the non-partitioned scale-1 graph by running:
+
+```bash
+# The first parameter means the scale of the graph is 1
+# The second parameter means the graph only has 1 partition(non-paritioned)
+sh ./Scripts/load_graph.sh 1 1
+```
+
+In the experiment, we used ten queries to verify the performance of GLogS and Neo4j. To validate the GLogS query performance for a specific pattern using the required number of threads (1- and 32-thread performance are reported in the paper), use the following commands:
+
+```bash
+# The first parameter is the id of the qeury for testing, ranging from 1 to 10
+# The second parameter is the number of threads for processing the query parallelly
+sh ./Scripts/query_on_single_machine.sh <query_id> <thread_num>
+```
+
+To validate our reported Neo4j performance, run:
+
+```bash
+# The first parameter is the id of the qeury for testing, ranging from 1 to 10
+sh ./Scripts/query_with_neo4j.sh -q <query_id>
+```
+
+### 4.2 Compare GLogS with TigerGraph
+
+In the paper, we compared GLogS with TigerGraph on a cluster containing 16 machines, using a scale-300 graph. For GLogS, each executor of the backend server is allowed to use up to 32 threads, while there's no parallel limitation for TigerGraph.
+
+To validate GLogS's performance, first follow the instructions from Section 3 to build a cluster of 16 servers * 32 threads and load the scale-300 graph with 16 partitions. After the cluster is successfully started, run the following commands to submit queries to the cluster to validate our reported GLogS performance.
+
+```bash
+# The first parameter is the id of the qeury for testing, ranging from 1 to 10
+sh ./Scripts/query_on_cluster.sh 1
+```
+
+### 4.3 Scalability of GLogS
+
+In the paper, we illustrated GLogS's scalability by reporting its performance under different configurations of server number, thread number, and graph scale. To reproduce GLogS's performance under a specific configuration (server number, thread number, and graph scale), first start up a cluster configured by these instructions following the instructions in Section 3. Next, use the `query_on_cluster.sh` script to submit queries to the cluster and validate GLogS's performance.
+
+```bash
+# The first parameter is the id of the qeury for testing, ranging from 1 to 10
+sh ./Scripts/query_on_cluster.sh 1
+```
 
