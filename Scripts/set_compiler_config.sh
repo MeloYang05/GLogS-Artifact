@@ -1,6 +1,13 @@
 servers_size=$1
 worker_num=$2
-is_simulated=$3
+glogue=$3
+is_simulated=$4
+
+if [[ -z "$glogue" ]]
+then
+    glogue="glogue"
+fi
+
 
 if [ "$is_simulated" == "y" ]
 then
@@ -30,7 +37,7 @@ then
 
     graph_schema_config="graph.schema: /opt/resources/Schemas/ldbc_schema.json"
 
-    catalog_path_config="catalog.path: /opt/resources/Catalogs/catalog"
+    catalog_path_config="catalog.path: /opt/resources/GLogues/$glogue"
 
     properties="$worker_num_config\n$timeout_config\n$batch_size_config\n$output_capacity_config\n$hosts_config\n$server_num_config\n$graph_schema_config\n$catalog_path_config"
 
@@ -88,7 +95,7 @@ else
 
     graph_schema_config="graph.schema: /opt/resources/Schemas/ldbc_schema.json"
 
-    catalog_path_config="catalog.path: /opt/resources/Catalogs/catalog"
+    catalog_path_config="catalog.path: /opt/resources/GLogues/$glogue"
 
     properties="$worker_num_config\n$timeout_config\n$batch_size_config\n$output_capacity_config\n$hosts_config\n$server_num_config\n$graph_schema_config\n$catalog_path_config"
 
