@@ -45,6 +45,7 @@ This table shows our provided graphs with scales and partitions.
 | Scale |   Partitions   |
 | :---: | :------------: |
 |   1   |   1, 2, 4, 8   |
+|  30   |     1, 16      |
 |  100  | 1, 2, 4, 8, 16 |
 |  300  |    4, 8, 16    |
 | 1000  |       16       |
