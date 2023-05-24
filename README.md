@@ -275,7 +275,7 @@ For example, to submit query p1 to the cluster, run the following command:
 sh ./Scripts/query_on_cluster.sh 1
 ```
 
-## 4 Reproduce Experiment Results
+## 4. Reproduce Experiment Results
 
 ### 4.1 Compare GLogS with Neo4j
 
@@ -301,9 +301,10 @@ sh ./Scripts/load_graph.sh 1 1
 In the experiment, we used ten queries to verify the performance of GLogS and Neo4j. To validate the GLogS query performance for a specific pattern using the required number of threads (1- and 32-thread performance are reported in the paper), use the following commands:
 
 ```bash
-# The first parameter is the id of the qeury for testing, ranging from 1 to 10
-# The second parameter is the number of threads for processing the query parallelly
-sh ./Scripts/query_on_single_machine.sh <query_id> <thread_num>
+# The first parameter is the scale of the graph
+# The second parameter is the id of the qeury for testing, ranging from 1 to 10
+# The third parameter is the number of threads for processing the query parallelly
+sh ./Scripts/query_on_single_machine.sh <scale> <thread_num> <query_id> 
 ```
 
 To validate our reported Neo4j performance, run:
