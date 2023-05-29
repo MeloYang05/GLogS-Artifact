@@ -21,7 +21,7 @@ In addition, a 25Gbps network card was used to connect these servers. Such a hig
 Most of the components of GLogS are written in Rust, except for the compiler for the graph declarative language, which is written in Java. To save time in setting up these components, we have prepared the execution environment in Docker images. You can deploy the environment by running the following command:
 
 ```bash
-sh ./Scripts/load_docker_images.sh
+bash ./Scripts/load_docker_images.sh
 ```
 
 Some basic tools, such as `curl`, are required. Additionally, since the benchmark tools for GLogS are written in Java, you should ensure that your machine has JDK >= 11 installed.
@@ -31,13 +31,13 @@ Some basic tools, such as `curl`, are required. Additionally, since the benchmar
 Due to the size limit of the GitHub repository, we have uploaded the already partitioned graphs used in our experiments to the Object Storage Service of Alibaba Cloud. We have provided you with a script to quickly download and install the graph partitions onto your machine.
 
 ```bash
-sh ./Scripts/load_graph.sh <scale> <partition_num>
+bash ./Scripts/load_graph.sh <scale> <partition_num>
 ```
 
 For example, to download the scale-1 graph with 8 partitions, you can run the following command:
 
 ```bash
-sh ./Scripts/load_graph.sh 1 8
+bash ./Scripts/load_graph.sh 1 8
 ```
 
 This table shows our provided graphs with scales and partitions.
@@ -71,19 +71,19 @@ This table shows our provided graphs with scales and partitions.
 We provide you with a convenient way to reproduce GLogS's performance on a single machine using non-partitioned graphs. Firstly, download the non-partitioned graph with the desired scale onto your machine by running:
 
 ```bash
-sh ./Script/load_graph.sh <scale> 1
+bash ./Script/load_graph.sh <scale> 1
 ```
 
 Then, you can verify GLogS's performance on a single machine with the following command:
 
 ```bash
-sh ./Scripts/query_on_single_machine.sh <scale> <thread_num> <query_id> 
+bash ./Scripts/query_on_single_machine.sh <scale> <thread_num> <query_id> 
 ```
 
 For example, if you want to test GLogS's performance on query p1 with 32 threads on a scale-1 graph, you can run:
 
 ```bash
-sh ./Scripts/query_on_single_machine.sh 1 32 1
+bash ./Scripts/query_on_single_machine.sh 1 32 1
 ```
 
 The output should look like:
@@ -100,31 +100,31 @@ executing query time cost is 1000 ms
 Before simulating a GLogS cluster on your local machine, you should download the required graph by running:
 
 ```bash
-sh ./Script/load_graph.sh <scale> <partition_num>
+bash ./Script/load_graph.sh <scale> <partition_num>
 ```
 
 Next, you can quickly simulate a GLogS cluster consisting of one frontend server and several backend servers on your local machine by running the following command:
 
 ```bash
-sh ./Scripts/start_simulated_cluster.sh <scale> <serser_num> <thread_num>
+bash ./Scripts/start_simulated_cluster.sh <scale> <serser_num> <thread_num>
 ```
 
 For example, the following command will start a cluster with 8 backend servers, with each server using 4 threads for computation, and each server will load 1 partition of the scale-1 graph separately:
 
 ```bash
-sh ./Scripts/start_simulated_cluster.sh 1 8 4
+bash ./Scripts/start_simulated_cluster.sh 1 8 4
 ```
 
 After starting up the 'mini' cluster, the compiler server's log will be stored at `./Logs/compiler.log`, and the executor server logs will be stored at `./Logs/executor${i}.log` for each executor server. If every executor connects to each other successfully, you can use the `./Scripts/query_on_cluster.sh` script to submit queries to the cluster:
 
 ```bash
-sh ./Scripts/query_on_cluster.sh <query_id>
+bash ./Scripts/query_on_cluster.sh <query_id>
 ```
 
 For example, you can submit query p1 to the cluster by running the following command:
 
 ```bash
-sh ./Scripts/query_on_cluster.sh 1
+bash ./Scripts/query_on_cluster.sh 1
 ```
 
 The output should look like:
@@ -140,7 +140,7 @@ query count: 1; execute time(ms): 1940; qps: 0.51546395
 Finally, you can use `./Scripts/stop_simulated_cluster.sh` to stop the cluster
 
 ```bash
-sh ./Scripts/stop_simulated_cluster.sh
+bash ./Scripts/stop_simulated_cluster.sh
 ```
 
 ## 3. GLogS Cluster Configuration
@@ -206,13 +206,13 @@ scp -r ./Artifact <server_hostname>:<Artifact Directory>
 Assuming you are already in the artifact directory, you should configure the execution environment of the compiler by running:
 
 ```bash
-sh ./Scripts/load_docker_compiler.sh
+bash ./Scripts/load_docker_compiler.sh
 ```
 
 Next, configure the compiler according to the IPs and ports files by running:
 
 ```bash
-sh ./Scripts/set_compiler_config.sh <server_num> <thread_num>
+bash ./Scripts/set_compiler_config.sh <server_num> <thread_num>
 ```
 
 where `<server_num>` represents the number of backend servers, and `<thread_num>` indicates the number of threads participating in the computation of each backend server."
@@ -222,7 +222,7 @@ where `<server_num>` represents the number of backend servers, and `<thread_num>
 On each backend server, the first step is to configure the execution environment of the executor by running:
 
 ```bash
-sh ./Scripts/load_docker_executor.sh
+bash ./Scripts/load_docker_executor.sh
 ```
 
 Next, load the specific graph partition onto the server. As mentioned earlier, the number of backend servers should be equal to the number of graph partitions, and the backend server with ID `i` should store exactly graph partition `i`. Therefore, assuming that `scale` is the required graph scale, `server_num` is the number of backend servers, and `<id>` is the ID of the current backend server, you can load the graph partition by running:
@@ -234,7 +234,7 @@ sh ./Scripts/load_graph_partition.sh <scale> <server_num> <id>
 Finally, configure the executor according to the IPs and ports files by running:
 
 ```bash
-sh ./Scripts/set_executor_config.sh
+bash ./Scripts/set_executor_config.sh
 ```
 
 ### 3.4 Start up the cluster
@@ -246,7 +246,7 @@ After configuring the frontend server and all the backend servers, it is time to
 We suggest starting up the executors on the backend servers in ascending order of their IDs. On each backend server, you can start up the executor by simply running:
 
 ```bash
-sh ./Scripts/start_executor.sh <scale> <server_num> <id>
+bash ./Scripts/start_executor.sh <scale> <server_num> <id>
 ```
 
 where `<scale>` is the graph scale, `<server_num>` is the number of backend servers, and `<id>` is the ID of the current backend server.
@@ -258,7 +258,7 @@ During the initialization of executor, it may takes several minutes to load the 
 You can start up the compiler on the frontend server by running:
 
 ```bash
-sh ./Scripts/start_compiler.sh
+bash ./Scripts/start_compiler.sh
 ```
 
 ### 3.4 Submit Queries
@@ -266,13 +266,13 @@ sh ./Scripts/start_compiler.sh
 After the compiler and all the executors are started up, you can submit queries to the GLogS cluster from any machine within the subnet, as long as the IPs and ports are properly configured in the two config files. To submit a query to the GLogS cluster, run:
 
 ```bash
-sh ./Scripts/query_on_cluster.sh <query_id>
+bash ./Scripts/query_on_cluster.sh <query_id>
 ```
 
 For example, to submit query p1 to the cluster, run the following command:
 
 ```bash
-sh ./Scripts/query_on_cluster.sh 1
+bash ./Scripts/query_on_cluster.sh 1
 ```
 
 ## 4. Reproduce Experiment Results
@@ -285,9 +285,9 @@ First, load the Docker images of GLogS and Neo4j by running the following comman
 
 ```bash
 # Load the image of glogs executor
-sh ./Scripts/load_docker_executor.sh
+bash ./Scripts/load_docker_executor.sh
 # Load the image of neo4j
-sh ./Scripts/load_docker_neo4j.sh
+bash ./Scripts/load_docker_neo4j.sh
 ```
 
 Next, download the non-partitioned scale-1 graph by running:
@@ -295,7 +295,7 @@ Next, download the non-partitioned scale-1 graph by running:
 ```bash
 # The first parameter means the scale of the graph is 1
 # The second parameter means the graph only has 1 partition(non-paritioned)
-sh ./Scripts/load_graph.sh 1 1
+bash ./Scripts/load_graph.sh 1 1
 ```
 
 In the experiment, we used ten queries to verify the performance of GLogS and Neo4j. To validate the GLogS query performance for a specific pattern using the required number of threads (1- and 32-thread performance are reported in the paper), use the following commands:
@@ -304,14 +304,14 @@ In the experiment, we used ten queries to verify the performance of GLogS and Ne
 # The first parameter is the scale of the graph
 # The second parameter is the id of the qeury for testing, ranging from 1 to 10
 # The third parameter is the number of threads for processing the query parallelly
-sh ./Scripts/query_on_single_machine.sh <scale> <thread_num> <query_id> 
+bash ./Scripts/query_on_single_machine.sh <scale> <thread_num> <query_id> 
 ```
 
 To validate our reported Neo4j performance, run:
 
 ```bash
 # The first parameter is the id of the qeury for testing, ranging from 1 to 10
-sh ./Scripts/query_with_neo4j.sh -q <query_id>
+bash ./Scripts/query_with_neo4j.sh -q <query_id>
 ```
 
 ### 4.2 Compare GLogS with TigerGraph
@@ -322,7 +322,7 @@ To validate GLogS's performance, first follow the instructions from Section 3 to
 
 ```bash
 # The first parameter is the id of the qeury for testing, ranging from 1 to 10
-sh ./Scripts/query_on_cluster.sh 1
+bash ./Scripts/query_on_cluster.sh 1
 ```
 
 ### 4.3 Scalability of GLogS
@@ -331,7 +331,7 @@ In the paper, we illustrated GLogS's scalability by reporting its performance un
 
 ```bash
 # The first parameter is the id of the qeury for testing, ranging from 1 to 10
-sh ./Scripts/query_on_cluster.sh 1
+bash ./Scripts/query_on_cluster.sh 1
 ```
 
 ### 4.4 Optimization with GLogue
@@ -343,14 +343,14 @@ To build a GLogue, first, ensure that the machine already contains the non-parti
 ```bash
 # The first parameter is the scale of the graph
 # The second parameter is the partition number of the graph
-sh ./Scripts/load_graph.sh 1 1
+bash ./Scripts/load_graph.sh 1 1
 ```
 
 Next, build the GLogue by running `./Scripts/build_glogue.sh` with the level parameter:
 
 ```bash
 # The parameter is the level of the glogue to build
-sh ./Scripts/build_glogue.sh <level>
+bash ./Scripts/build_glogue.sh <level>
 ```
 
 After building, the GLogues will be stored in `./GLogues/` and named `glogue_level_<level>`.
@@ -361,37 +361,37 @@ To verify query performance with a specific GLogue on a single machine, use the 
 
 ```bash
 # The last parameter is the name of the glogue to use
-sh ./Scripts/query_on_single_machine.sh <scale> <thread_num> <query_id> <glogue_name>
+bash ./Scripts/query_on_single_machine.sh <scale> <thread_num> <query_id> <glogue_name>
 ```
 
 For example:
 
 ```bash
-sh ./Scripts/query_on_single_machine.sh 1 32 1 glogue_level_2
+bash ./Scripts/query_on_single_machine.sh 1 32 1 glogue_level_2
 ```
 
 You can also start a simulated "mini" cluster with a specific GLogue by running:
 
 ```bash
-sh ./Scripts/start_simulated_cluster.sh <scale> <server_num> <thread_num> <glogue_name>
+bash ./Scripts/start_simulated_cluster.sh <scale> <server_num> <thread_num> <glogue_name>
 ```
 
 For example:
 
 ```bash
-sh ./Scripts/start_simulated_cluster.sh 1 8 4 glogue_level_2
+bash ./Scripts/start_simulated_cluster.sh 1 8 4 glogue_level_2
 ```
 
 When starting a real GLogS cluster, you can specify which GLogue to use when configuring the compiler in the frontend server by running:
 
 ```bash
-sh ./Scripts/set_compiler_config.sh <server_size> <worker_num> <glogue_name>
+bash ./Scripts/set_compiler_config.sh <server_size> <worker_num> <glogue_name>
 ```
 
 For example:
 
 ```bash
-sh ./Scripts/set_compiler_config.sh 8 4 glogue_level_2
+bash ./Scripts/set_compiler_config.sh 8 4 glogue_level_2
 ```
 
 #### 4.4.3 High-Order v.s. Low-Order
@@ -399,30 +399,30 @@ sh ./Scripts/set_compiler_config.sh 8 4 glogue_level_2
 In the paper, we reported query performance comparisons between High-Order GLogue and Low-Order GLogue. To reproduce the results, first ensure that the machine contains the non-partitioned scale-1 graph. If not, run the following command to download the required graph onto your machine:
 
 ```bash
-sh ./Scripts/load_graph.sh 1 1
+bash ./Scripts/load_graph.sh 1 1
 ```
 
 Next, build the GLogues of level 2, 3, 4 by running:
 
 ```bash
-sh ./Scripts/build_glogue.sh 2
+bash ./Scripts/build_glogue.sh 2
 
-sh ./Scripts/build_glogue.sh 3
+bash ./Scripts/build_glogue.sh 3
 
-sh ./Scripts/build_glogue.sh 4
+bash ./Scripts/build_glogue.sh 4
 ```
 
 Finally, obtain performances using these three GLogues separately by running:
 
 ```bash
 # Query performance using glogue of level 2
-sh ./Scripts/query_on_single_machine.sh 1 1 <query_id> glogue_level_2
+bash ./Scripts/query_on_single_machine.sh 1 1 <query_id> glogue_level_2
 # Query performance using glogue of level 3
-sh ./Scripts/query_on_single_machine.sh 1 1> <query_id> glogue_level_3
+bash ./Scripts/query_on_single_machine.sh 1 1> <query_id> glogue_level_3
 # Query performance using glogue of level 4
-sh ./Scripts/query_on_single_machine.sh 1 1 <query_id> glogue_level_4
+bash ./Scripts/query_on_single_machine.sh 1 1 <query_id> glogue_level_4
 # Baseline performance (best performance)
-sh ./Scripts/query_on_single_machine.sh 1 1 <query_id>
+bash ./Scripts/query_on_single_machine.sh 1 1 <query_id>
 ```
 
 We used the scale-1 graph and one thread for every query in our experiment and reported the average query performance slowdown by using these GLogues compared to the best plan (plan generated by GLogue of `./GLogues/GLogue`).
@@ -440,26 +440,26 @@ For example, a GLogue generated from a scale-100 graph sparsified to 1% with str
 We use the non-partitioned scale-100 graph for the comparison on a single machine. Therefore, to reproduce the comparison on a single machine, you should first download the non-partitioned scale-100 graph to your machine by running:
 
 ```bash
-sh ./Scripts/load_graph.sh 100 1
+bash ./Scripts/load_graph.sh 100 1
 ```
 
 Next, obtain the query performances using the GLogues from unified sparsification and stratified sparsification with different rates separately  by running:
 
 ```bash
 # Query performance using glogue from stratified sparsifid scale-100 graph with rate=0.01
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.01_stratified
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.01_stratified
 # Query performance using glogue from uniform sparsifid scale-100 graph with rate=0.01
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.01_uniform
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.01_uniform
 # Query performance using glogue from stratified sparsifid scale-100 graph with rate=0.001
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.001_stratified
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.001_stratified
 # Query performance using glogue from uniform sparsifid scale-100 graph with rate=0.001
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.001_uniform
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.001_uniform
 # Query performance using glogue from stratified sparsifid scale-100 graph with rate=0.00001
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.00001_stratified
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.00001_stratified
 # Query performance using glogue from uniform sparsifid scale-100 graph with rate=0.00001
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.00001_uniform
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.00001_uniform
 # Baseline performance (best performance)
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id>
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id>
 ```
 
 We suggest using 32 threads to speed up query execution.
@@ -476,38 +476,38 @@ We use the non-partitioned scale-1, scale-30, and scale-100 graphs for compariso
 
 ```bash
 # Download the non-partitioned scale-1 graph
-sh ./Scripts/load_graph.sh 1 1
+bash ./Scripts/load_graph.sh 1 1
 # Download the non-partitioned scale-30 graph
-sh ./Scripts/load_graph.sh 30 1
+bash ./Scripts/load_graph.sh 30 1
 # Download the non-partitioned scale-100 graph
-sh ./Scripts/load_graph.sh 100 1
+bash ./Scripts/load_graph.sh 100 1
 ```
 
 Next, obtain the query performances using the these GLogues by running:
 
 ```bash
 # Query performance using glogue from stratified sparsifid scale-1 graph with rate=0.01
-sh ./Scripts/query_on_single_machine.sh 1 <thread_num> <query_id> glogue_1_0.01_stratified
+bash ./Scripts/query_on_single_machine.sh 1 <thread_num> <query_id> glogue_1_0.01_stratified
 # Query performance using glogue from stratified sparsifid scale-1 graph with rate=0.001
-sh ./Scripts/query_on_single_machine.sh 1 <thread_num> <query_id> glogue_1_0.001_stratified
+bash ./Scripts/query_on_single_machine.sh 1 <thread_num> <query_id> glogue_1_0.001_stratified
 # Query performance using glogue from stratified sparsifid scale-1 graph with rate=0.00001
-sh ./Scripts/query_on_single_machine.sh 1 <thread_num> <query_id> glogue_1_0.00001_stratified
+bash ./Scripts/query_on_single_machine.sh 1 <thread_num> <query_id> glogue_1_0.00001_stratified
 # Query performance using glogue from stratified sparsifid scale-30 graph with rate=0.01
-sh ./Scripts/query_on_single_machine.sh 30 <thread_num> <query_id> glogue_30_0.01_stratified
+bash ./Scripts/query_on_single_machine.sh 30 <thread_num> <query_id> glogue_30_0.01_stratified
 # Query performance using glogue from stratified sparsifid scale-30 graph with rate=0.001
-sh ./Scripts/query_on_single_machine.sh 30 <thread_num> <query_id> glogue_30_0.001_stratified
+bash ./Scripts/query_on_single_machine.sh 30 <thread_num> <query_id> glogue_30_0.001_stratified
 # Query performance using glogue from stratified sparsifid scale-30 graph with rate=0.00001
-sh ./Scripts/query_on_single_machine.sh 30 <thread_num> <query_id> glogue_30_0.00001_stratified
+bash ./Scripts/query_on_single_machine.sh 30 <thread_num> <query_id> glogue_30_0.00001_stratified
 # Query performance using glogue from stratified sparsifid scale-100 graph with rate=0.01
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.01_stratified
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.01_stratified
 # Query performance using glogue from stratified sparsifid scale-100 graph with rate=0.001
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.001_stratified
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.001_stratified
 # Query performance using glogue from stratified sparsifid scale-100 graph with rate=0.00001
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.00001_stratified
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id> glogue_100_0.00001_stratified
 # Baseline performances (best performance)
-sh ./Scripts/query_on_single_machine.sh 1 <thread_num> <query_id>
-sh ./Scripts/query_on_single_machine.sh 30 <thread_num> <query_id>
-sh ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id>
+bash ./Scripts/query_on_single_machine.sh 1 <thread_num> <query_id>
+bash ./Scripts/query_on_single_machine.sh 30 <thread_num> <query_id>
+bash ./Scripts/query_on_single_machine.sh 100 <thread_num> <query_id>
 ```
 
 We suggest using 32 threads to speed up query execution.

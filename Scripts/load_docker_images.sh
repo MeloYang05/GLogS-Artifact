@@ -1,3 +1,3 @@
-sh ./Scripts/load_docker_compiler.sh
-sh ./Scripts/load_docker_executor.sh
-sh ./Scripts/load_docker_neo4j.sh
+bash ./Scripts/load_docker_compiler.sh
+bash ./Scripts/load_docker_executor.sh
+bash ./Scripts/load_docker_neo4j.sh
