@@ -1,4 +1,5 @@
-# GLogS Artifact (USENIX ATC 2023)
+# GLogS: Interactive Graph Pattern Matching Query At Large Scale (USENIX ATC 2023) [[Paper](https://www.usenix.org/system/files/atc23-lai.pdf)] [[Slides](https://www.usenix.org/system/files/atc23_slides_lai_0.pdf)]
+
 
 This repository holds the artifact of the paper "GLogS: Interactive Graph Pattern Matching Query At Large Scale" published on USENIX ATC 2023. 
 
